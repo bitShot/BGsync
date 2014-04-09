@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+    This file is part of BGsync.
+
+    BGsync is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BGsync is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with BGsync.  If not, see <http://www.gnu.org/licenses/>
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="pref_notif"
+        android:title="@string/pref_notif"
+        android:summary="@string/pref_notif_summ"
+        android:defaultValue="true" />
+    <ListPreference
+        android:dependency="pref_notif"
+        android:key="pref_intervalo"
+        android:title="@string/pref_intervalo"
+        android:summary="@string/pref_intervalo_summ"
+        android:entries="@array/pref_intervalo_entradas"
+        android:entryValues="@array/pref_intervalo_valores" />
+    
+    <Preference android:title="@string/pref_logout"
+                android:key="pref_logout"
+                android:summary="@string/pref_logout_summ"/>
+    
+</PreferenceScreen>

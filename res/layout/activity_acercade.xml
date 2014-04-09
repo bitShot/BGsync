@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    This file is part of BGsync.
+
+    BGsync is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BGsync is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with BGsync.  If not, see <http://www.gnu.org/licenses/>
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="18dp"
+        android:text="@string/version"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textStyle="bold"
+        android:text="Desarrollado por:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:src="@drawable/logo_about" />
+
+    <TextView
+        android:id="@+id/textView_jj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Juan-José Gª-Castro Crespo"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="15sp" />
+    
+    <TextView
+        android:id="@+id/textView_jj_correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_jj"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:text="crespo.sonseca@gmail.com"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="12sp" />
+    
+    <TextView
+        android:id="@+id/textView_jcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Javier Cano Cano"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/textView_jj_correo"
+        android:textSize="15sp" />
+    
+    <TextView
+        android:id="@+id/textView_jcc_correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="javier.cano555@gmail.com"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="2dp"
+        android:layout_below="@+id/textView_jcc"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_gpl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:text="Software bajo licencia GPLv3"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="12sp" />
+
+   
+
+</RelativeLayout>

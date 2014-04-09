@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    This file is part of BGsync.
+
+    BGsync is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BGsync is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with BGsync.  If not, see <http://www.gnu.org/licenses/>
+-->
+
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableRow_libro"
+    android:layout_width="fill_parent"
+    android:layout_height="80dp"
+    android:layout_marginTop="5dp"
+    android:gravity="center"
+    android:clickable="true"
+   	android:longClickable="true"
+   	android:background="@drawable/activated_background_holo_light"  >
+   	
+	<LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center" >
+
+		<TextView
+		    android:id="@+id/textView_dia"
+		    android:layout_width="48dp"
+		    android:layout_height="48dp"
+		    android:layout_marginRight="10dp"
+		    android:background="@drawable/fondo_dia"
+		    android:gravity="center"
+		    android:text="@string/cuadrado_error"
+		    android:textAppearance="?android:attr/textAppearanceLarge" />
+   
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                >
+                
+                <TextView
+                android:id="@+id/textView_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                
+               
+                
+            </LinearLayout>
+     </LinearLayout>
+</TableRow>

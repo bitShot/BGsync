@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+    This file is part of BGsync.
+
+    BGsync is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BGsync is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with BGsync.  If not, see http://www.gnu.org/licenses
+-->
+
+<resources>
+
+    <string name="app_name">BGsync</string>
+    <string name="action_settings">Settings</string>
+    <string name="check_box_recordar">Recordar</string>
+    <string name="boton_entrar">Entrar</string>
+    <string name="editText_usuario">Usuario</string>
+    <string name="editText_contrasena">Contraseña</string>
+    <string name="boton_renovar">Renovar</string>
+    <string name="accion_renovar">Renovar</string>
+    <string name="logo_descripcion">Biblioteca UCLM</string>
+    <string name="titulo_biblioteca">Biblioteca</string>
+    <string name="cuadrado_error">E</string>
+    <string name="error">Error</string>
+    <string name="textView_biblioteca">Biblioteca</string>
+    <string name="textView_titulo">Título</string>
+    <string name="textView_fecha">Fecha de devolución</string>
+    <string name="textView_sucursal">Sucursal</string>
+    <string name="imageView_okey">Libro seleccionado</string>
+    <string name="pref_notif">Notificaciones</string>
+    <string name="pref_notif_summ">Si está marcado, se notificarán los eventos (sólo si se marcó Recordar Usuario).</string>
+    <string name="pref_logout_summ">Finaliza tu sesión y te permite iniciar con otro usuario diferente.</string>
+    <string name="pref_logout">Cerrar sesión</string>
+    <string name="pref_intervalo">Intervalo actualización</string>
+    <string name="pref_intervalo_summ">Intervalo de comprobación de los libros y notificación si procede.</string>
+    <string name="version">v0.53</string>
+    
+
+</resources>
