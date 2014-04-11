@@ -30,6 +30,7 @@ import com.example.bibliotecauclm.ActivityLibros;
 import com.example.bibliotecauclm.LogIn;
 import com.example.bibliotecauclm.R;
 import com.example.bibliotecauclm.misc.Utiles;
+import com.example.bibliotecauclm.objetos.BaseLibros;
 import com.example.bibliotecauclm.objetos.Libro;
 
 import android.app.NotificationManager;
@@ -53,7 +54,7 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 	private NotificationManager mNotificationManager;
 	private SharedPreferences sharedPref;
 	
-	private static boolean debug = false;
+	private static boolean debug = true;
 	
 	private PowerManager.WakeLock w1;
 	
@@ -125,12 +126,16 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 	protected void onPostExecute(List<Libro> res){
 		if(res != null){
 			if (this.contexto instanceof ActivityLibros ){
+				 BaseLibros db = BaseLibros.obtenerDB(this.contexto);
+				 db.actualizarBase((ArrayList<Libro>)res);
 				 ((ActivityLibros) this.contexto).anadirLibros((ArrayList<Libro>)res);
+				 
 			}else{
 				
 				
 				lanzarNotificacionRenovar(res);
-				
+				BaseLibros db = BaseLibros.obtenerDB(this.contexto);
+				db.actualizarBase((ArrayList<Libro>)res);
 			}
 		}else{
 			Toast.makeText(this.contexto.getApplicationContext()

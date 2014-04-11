@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
+
+import com.example.bibliotecauclm.LogIn;
 import com.example.bibliotecauclm.misc.Utiles;
 import com.example.bibliotecauclm.objetos.Libro;
 
@@ -90,7 +92,10 @@ class RenovadorLibros extends  AsyncTask<String ,Libro ,Boolean> implements Asyn
 	@Override
 	public void ejecutar() {
 		 
-		this.execute(sharedPref.getString("usuario",null),sharedPref.getString("contrasena",null));
+		if(sharedPref.getBoolean("recordar", false))
+			this.execute(sharedPref.getString("usuario", ""),sharedPref.getString("contrasena", ""));
+		else
+			this.execute(LogIn.getUsuarioTemp(),LogIn.getContrasenaTemp());
 	}
 	
 	

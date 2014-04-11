@@ -25,6 +25,7 @@ import com.example.bibliotecauclm.misc.Utiles;
 import com.example.bibliotecauclm.net.Actualizadores;
 import com.example.bibliotecauclm.net.AsyncTaskInterface;
 
+import com.example.bibliotecauclm.objetos.BaseLibros;
 import com.example.bibliotecauclm.objetos.Libro;
 
 import android.app.Activity;
@@ -70,8 +71,10 @@ public class ActivityLibros extends Activity{
 		this.getActionBar().setDisplayShowTitleEnabled(false);
 		sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
 		tableLayoutLibros = (TableLayout) findViewById(R.id.tableLayout_libros);
-		AsyncTaskInterface actualizador = Actualizadores.crearActualizadorActivityLibros(this);
-		actualizador.ejecutar();
+		/*AsyncTaskInterface actualizador = Actualizadores.crearActualizadorActivityLibros(this);
+		actualizador.ejecutar();*/
+		BaseLibros db = BaseLibros.obtenerDB(this);
+		anadirLibros(db.obtenerLibros());
 		
 		if(sharedPref.getBoolean(Utiles.PREF_NOTIF, true) && sharedPref.getBoolean("recordar", false)){
 			Utiles.iniciarAlarmaServicio(getApplicationContext());
@@ -165,7 +168,12 @@ public class ActivityLibros extends Activity{
 		}
 		
 	}
-	
+	/**
+	 * Escribe en la tabla principal (en el activity_libros) la lista de libros 
+	 * pasada como argumento.
+	 * 
+	 * @param librosArray
+	 */
 	public void anadirLibros(ArrayList<Libro> librosArray){
 
 		Collections.sort(librosArray);

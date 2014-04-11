@@ -32,10 +32,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.text.format.Time;
+
+import com.example.bibliotecauclm.objetos.BaseLibros;
 import com.example.bibliotecauclm.objetos.Libro;
 
 public class Utiles {
@@ -271,5 +274,6 @@ public static void cancelarAlarmaServicio(Context context){
 		alarms.cancel(recurringAlarm);
 		
 	}
+
 	
 }
