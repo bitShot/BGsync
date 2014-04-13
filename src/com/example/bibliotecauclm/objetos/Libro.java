@@ -30,9 +30,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import android.text.format.Time;
-import android.util.Log;
-
-public class Libro implements Comparable{
+public class Libro implements Comparable<Libro>{
 	
 	
 	private String biblioteca;
@@ -198,16 +196,6 @@ public class Libro implements Comparable{
 		
 	}
 
-	@Override
-	public int compareTo(Object another) {
-		Libro otro = (Libro)another;
-		
-		if(this.getFecha().before(otro.getFecha()))
-			return -1;
-		else
-			return 1;
-	}
-
 	public boolean estaPasado(){
 		Time now = new Time();
 		now.setToNow();
@@ -235,5 +223,15 @@ public class Libro implements Comparable{
 		Time libroManana = this.getFecha();
 		nowAbsolute.set(nowAbsolute.toMillis(false)+86400000);
 		return Time.compare(libroManana,nowAbsolute) == 0;
+	}
+
+	@Override
+	public int compareTo(Libro another) {
+		Libro otro = another;
+		
+		if(this.getFecha().before(otro.getFecha()))
+			return -1;
+		else
+			return 1;
 	}
 }

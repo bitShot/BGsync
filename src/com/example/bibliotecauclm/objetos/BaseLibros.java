@@ -12,15 +12,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class BaseLibros extends SQLiteOpenHelper{
 	/**
 	 * NOTA: investigar si se pueden sacar dos libros con el mismo titulo en la biblioteca,
-	 * 		 de no poderse, la clave primaria es el título, de otra forma, nos las tenemos
+	 * 		 de no poderse, la clave primaria es el tï¿½tulo, de otra forma, nos las tenemos
 	 * 		 que arreglar para saber cuando un libro esta desactualizado o no.
 	 * 
-	 * IDEA: podemos usar como clave primaria la posición que el libro ocupa en la tabla de la biblioteca,
+	 * IDEA: podemos usar como clave primaria la posiciï¿½n que el libro ocupa en la tabla de la biblioteca,
 	 * 		 aunque, si se pueden sacar dos iguales, debemos ver si se ordenan igual en dicha tabla o no (con el 
 	 * 		 identificador podemos saberlo)
 	 * 
-	 * P.D. Lo idóneo sería poder hacerlo con los identificadores, el problema es que esos identificadores no los
-	 * 		tenemos hasta que el libro se puede renovar (un día antes de la fecha de expiración). Normalmente ese campo
+	 * P.D. Lo idï¿½neo serï¿½a poder hacerlo con los identificadores, el problema es que esos identificadores no los
+	 * 		tenemos hasta que el libro se puede renovar (un dï¿½a antes de la fecha de expiraciï¿½n). Normalmente ese campo
 	 * 		va estar a null.
 	 * 	
 	 */
@@ -32,7 +32,7 @@ public class BaseLibros extends SQLiteOpenHelper{
 															"identificador TEXT)" ;
 	
 	/**
-	 * Obtiene la base de datos, tan solo llámalo y usa los métodos.
+	 * Obtiene la base de datos, tan solo llï¿½malo y usa los mï¿½todos.
 	 * No intentar crear bases de datos de otra forma.
 	 * @param ctx
 	 * @return 
@@ -42,7 +42,7 @@ public class BaseLibros extends SQLiteOpenHelper{
 	}	
 	
 	/**
-	 * Constructor privado de la base de datos. Está privado, para evitar que
+	 * Constructor privado de la base de datos. Es privado, para evitar que
 	 * se puedan crear bases de datos de otra forma.
 	 * 
 	 * @param ctx
@@ -69,9 +69,9 @@ public class BaseLibros extends SQLiteOpenHelper{
 		
 	}
 	/**
-	 * Este método inserta en la base de datos, todos los libros que le pases
-	 * en la lista. ¡CUIDADO! si el libro ya está, se insertará igual. Para actualizar,
-	 * utiliza el método actualizarBase().
+	 * Este mï¿½todo inserta en la base de datos, todos los libros que le pases
+	 * en la lista. ï¿½CUIDADO! si el libro ya estï¿½, se insertarï¿½ igual. Para actualizar,
+	 * utiliza el mï¿½todo actualizarBase().
 	 * 
 	 * @param libros
 	 */
@@ -81,6 +81,7 @@ public class BaseLibros extends SQLiteOpenHelper{
 		
 		for(Libro libro: libros){
 			
+			if (!comprobarExiste(libro)){
 			ContentValues reg = new ContentValues();
 			reg.put("biblioteca", libro.getBiblioteca());
 			reg.put("sucursal", libro.getSucursal());
@@ -96,6 +97,7 @@ public class BaseLibros extends SQLiteOpenHelper{
 			reg.put("identificador", libro.getIdentificador());
 			
 			db.insert("Libros",null , reg);
+			}
 		}
 		
 		db.close();
@@ -103,8 +105,28 @@ public class BaseLibros extends SQLiteOpenHelper{
 		
 	}
 	/**
-	 * Este método obtiene una lista completa de todos los libros existentes en la
-	 * base de datos. La lista será vacía si no hay nada.
+	 * Metodo para comprobar si existe un libro en la base de datos, para hacerlo
+	 * compruebo si existe un libro con los campos titulo, biblioteca y sucursal
+	 * iguales al que quiero comprobar.
+	 * @param l
+	 * @return true  --> el libro esta en la base de datos
+	 * 		   false --> el libro NO esta en la base de datos
+	 */
+	private boolean comprobarExiste(Libro l){
+		SQLiteDatabase db = this.getReadableDatabase();
+		String[] args = {l.getTitulo(),
+						 l.getBiblioteca(),
+						 l.getSucursal()};
+		Cursor c = db.rawQuery(" SELECT * FROM Libros WHERE titulo=? AND biblioteca=? AND sucursal=? ", args);
+		
+		if (c.getCount() == 0)
+			return false;
+		else 
+			return true;
+	}
+	/**
+	 * Este mï¿½todo obtiene una lista completa de todos los libros existentes en la
+	 * base de datos. La lista serï¿½ vacï¿½a si no hay nada.
 	 * 
 	 * @return
 	 */
@@ -139,8 +161,8 @@ public class BaseLibros extends SQLiteOpenHelper{
 		
 	}
 	/**
-	 * Este método elimina todos los registros de la base de datos
-	 * y los inserta de nuevo. Versión temporal. 
+	 * Este mï¿½todo elimina todos los registros de la base de datos
+	 * y los inserta de nuevo. Versiï¿½n temporal. 
 	 * 
 	 * @param libros
 	 */
