@@ -50,6 +50,16 @@ public class Libro implements Comparable{
 		this.fecha = fecha;
 	}
 	
+	public Libro (String biblioteca,String sucursal,String titulo,String fecha,String id){
+		this.biblioteca = biblioteca;
+		this.sucursal = sucursal;
+		this.titulo = titulo;
+		this.fecha = fecha;
+		this.identificador = id;
+	
+		
+	}
+	
 	public String getBiblioteca(){
 		
 		return biblioteca;
@@ -66,6 +76,10 @@ public class Libro implements Comparable{
 	
 	public String getTitulo(){
 		return titulo;
+	}
+	
+	public String getFechaPlana(){
+		return fecha;
 	}
 	
 	public Time getFecha(){
