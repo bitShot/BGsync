@@ -19,7 +19,7 @@
 
 <resources>
 
-    <string name="app_name">BGsync</string>
+    <string name="app_name">BGsyncDEB</string>
     <string name="action_settings">Settings</string>
     <string name="check_box_recordar">Recordar</string>
     <string name="boton_entrar">Entrar</string>

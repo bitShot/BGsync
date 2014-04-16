@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    This file is part of BGsync.
+
+    BGsync is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BGsync is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with BGsync.  If not, see <http://www.gnu.org/licenses/>
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_detalles"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/fragment_divider">
+
+    <TextView
+        android:id="@+id/textView_biblioteca_nomod"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/textView_biblioteca"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    
+    <TextView
+        android:id="@+id/textView_biblioteca"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:layout_below="@+id/textView_biblioteca_nomod"
+        android:text="" />
+    
+     <TextView
+        android:id="@+id/textView_sucursal_nomod"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/textView_biblioteca"
+        android:text="@string/textView_sucursal"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    
+    
+    <TextView
+        android:id="@+id/textView_sucursal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_below="@+id/textView_sucursal_nomod"
+        android:gravity="center"
+        android:text="" />
+    
+    <TextView
+        android:id="@+id/textView_titulo_nomod"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/textView_sucursal"
+        android:text="@string/textView_titulo"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/textView_titulo"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_titulo_nomod"
+        android:layout_marginBottom="40dp"
+        android:text="" />
+    
+    <TextView
+        android:id="@+id/textView_fecha_nomod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_titulo"
+        android:layout_centerHorizontal="true"
+        android:text="@string/textView_fecha"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/textView_fecha"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView_fecha_nomod"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    
+
+</RelativeLayout>
+

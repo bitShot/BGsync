@@ -24,7 +24,6 @@ import java.util.HashMap;
 import com.example.bibliotecauclm.misc.Utiles;
 import com.example.bibliotecauclm.net.Actualizadores;
 import com.example.bibliotecauclm.net.AsyncTaskInterface;
-
 import com.example.bibliotecauclm.objetos.BaseLibros;
 import com.example.bibliotecauclm.objetos.Libro;
 
@@ -34,6 +33,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -192,11 +192,14 @@ public class ActivityLibros extends Activity{
 				Fragment displayFrag = (Fragment) getFragmentManager()
                         .findFragmentById(R.id.fragment_detalles);
 				if (displayFrag == null) {
-					/*
-					Intent intent = new Intent(this, DisplayActivity.class);
-					intent.putExtra("position", position);
-					startActivity(intent)limpiarSeleccion;
-					*/
+					
+					Intent intent = new Intent(getApplicationContext(), ActivityDetalles.class);
+					intent.putExtra("biblioteca",libros.get(v).getBiblioteca());
+					intent.putExtra("sucursal",libros.get(v).getSucursal());
+					intent.putExtra("titulo",libros.get(v).getTitulo());
+					intent.putExtra("fecha",libros.get(v).getFechaPlana());
+					startActivity(intent);
+					
 				} else {
 					
 					TextView titulo = (TextView) findViewById(R.id.textView_titulo);
