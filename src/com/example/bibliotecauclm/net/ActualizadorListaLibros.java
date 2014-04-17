@@ -54,7 +54,7 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 	private NotificationManager mNotificationManager;
 	private SharedPreferences sharedPref;
 	
-	private static boolean debug = true;
+	private static boolean debug = false;
 	
 	private PowerManager.WakeLock w1;
 	
@@ -124,23 +124,27 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 
 	@Override
 	protected void onPostExecute(List<Libro> res){
+		
+		BaseLibros db = BaseLibros.obtenerDB(this.contexto);
 		if(res != null){
 			if (this.contexto instanceof ActivityLibros ){
-				 BaseLibros db = BaseLibros.obtenerDB(this.contexto);
 				 db.actualizarBase((ArrayList<Libro>)res);
 				 ((ActivityLibros) this.contexto).anadirLibros((ArrayList<Libro>)res);
 				 
 			}else{
-				
-				
 				lanzarNotificacionRenovar(res);
-				BaseLibros db = BaseLibros.obtenerDB(this.contexto);
 				db.actualizarBase((ArrayList<Libro>)res);
 			}
 		}else{
 			Toast.makeText(this.contexto.getApplicationContext()
 					, "No se han podido recuperar sus libros", 
 					Toast.LENGTH_LONG).show();
+			/* Aunque no se puedan recuperar los libros, nosotros tomamos los que hay
+			 * en la base de datos
+			 */
+			if (this.contexto instanceof ActivityLibros )
+				((ActivityLibros) this.contexto).anadirLibros(db.obtenerLibros());
+			
 		}
 		if(w1 != null)
 			w1.release();
