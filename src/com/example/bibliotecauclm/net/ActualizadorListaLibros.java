@@ -144,7 +144,8 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 			 */
 			if (this.contexto instanceof ActivityLibros )
 				((ActivityLibros) this.contexto).anadirLibros(db.obtenerLibros());
-			
+			else
+				lanzarNotificacionRenovar(db.obtenerLibros());
 		}
 		if(w1 != null)
 			w1.release();

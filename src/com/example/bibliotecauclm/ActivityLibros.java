@@ -71,15 +71,10 @@ public class ActivityLibros extends Activity{
 		this.getActionBar().setDisplayShowTitleEnabled(false);
 		sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
 		tableLayoutLibros = (TableLayout) findViewById(R.id.tableLayout_libros);
-		AsyncTaskInterface actualizador = Actualizadores.crearActualizadorActivityLibros(this);
-		actualizador.ejecutar();
-		/* 
-		 * Lo hace el ActualizadorListaLibros (linea 146) de esta forma nos aseguramos que antes de 
-		 * mostrar nada se asegure que tiene la última versión de los libros y así al iniciar la app
-		 * se ejecuta, por eso las dos siguientes líneas están comentadas.
-		 */
-		//BaseLibros db = BaseLibros.obtenerDB(this);
-		//anadirLibros(db.obtenerLibros());
+		//AsyncTaskInterface actualizador = Actualizadores.crearActualizadorActivityLibros(this);
+		//actualizador.ejecutar();
+		BaseLibros db = BaseLibros.obtenerDB(this);
+		anadirLibros(db.obtenerLibros());
 		
 		if(sharedPref.getBoolean(Utiles.PREF_NOTIF, true) && sharedPref.getBoolean("recordar", false)){
 			Utiles.iniciarAlarmaServicio(getApplicationContext());
