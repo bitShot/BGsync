@@ -256,7 +256,7 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 				        .setLargeIcon((((BitmapDrawable)contexto.getResources()
 				            .getDrawable(R.drawable.ic_launcher)).getBitmap()))
 				        .setContentTitle("Estado de los libros...")
-				        .setContentText(pasadosDeFecha + " Pasados " + expiranHoy +" Hoy " + renovables +" Ma�ana")
+				        .setContentText(pasadosDeFecha + " Pasados " + expiranHoy +" Hoy " + renovables +" Mañana")
 				        .setTicker("Estado de los libros...")
 				        .setSound(notificationSound)
 				        .setAutoCancel(true);  
@@ -266,8 +266,8 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 			
 			String[] events = new String[3];
 			events[0] = pasadosDeFecha + " libros pasados";
-			events[1] = expiranHoy + " a renovar hoy";
-			events[2] = renovables + " a renovar ma�ana";
+			events[1] = expiranHoy + " a devolver hoy";
+			events[2] = renovables + " a devolver mañana";
 			inboxStyle.setBigContentTitle("Estado de los libros...");
 			for (int i=0; i < events.length; i++) {
 
