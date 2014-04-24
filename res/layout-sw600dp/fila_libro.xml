@@ -37,7 +37,6 @@
 		    android:layout_width="48dp"
 		    android:layout_height="48dp"
 		    android:layout_marginRight="10dp"
-		    android:background="@drawable/fondo_dia"
 		    android:gravity="center"
 		    android:text="@string/cuadrado_error"
 		    android:textAppearance="?android:attr/textAppearanceLarge" />

@@ -244,7 +244,23 @@ public class ActivityLibros extends Activity{
     	textViewDia.setText(((Integer)libro.getFecha().monthDay).toString());
     	
     	LinearLayout layoutDia = (LinearLayout) inflateRow.findViewById(R.id.layout_dia);
-    	layoutDia.setBackgroundResource(R.drawable.fondo_dia);
+    	switch (Utiles.estadoLibro(libro)){
+    		case 0:
+    			layoutDia.setBackgroundResource(R.drawable.fondo_dia_rojo);
+    			break;
+    		
+    		case 1:
+    			layoutDia.setBackgroundResource(R.drawable.fondo_dia_amarillo);
+    			break;
+    			
+    		case 2:
+    			layoutDia.setBackgroundResource(R.drawable.fondo_dia_amarillo);
+    			break;
+    			
+    		default:
+    			layoutDia.setBackgroundResource(R.drawable.fondo_dia);
+    			break;
+    	}
     	layoutDia.setOnClickListener(new OnClickListener(){
 
 			@Override
