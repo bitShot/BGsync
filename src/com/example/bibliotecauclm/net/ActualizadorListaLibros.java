@@ -38,6 +38,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -135,17 +136,29 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 				lanzarNotificacionRenovar(res);
 				db.actualizarBase((ArrayList<Libro>)res);
 			}
+			Editor editorPref = this.sharedPref.edit();
+			editorPref.putLong("intervalo", System.currentTimeMillis());
+			editorPref.apply();
 		}else{
 			Toast.makeText(this.contexto.getApplicationContext()
 					, "No se han podido recuperar sus libros", 
 					Toast.LENGTH_LONG).show();
+			
+			
 			/* Aunque no se puedan recuperar los libros, nosotros tomamos los que hay
 			 * en la base de datos
 			 */
-			if (this.contexto instanceof ActivityLibros )
+			
+			if (this.contexto instanceof ActivityLibros ){
 				((ActivityLibros) this.contexto).anadirLibros(db.obtenerLibros());
-			else
+			}else{
 				lanzarNotificacionRenovar(db.obtenerLibros());
+			}
+			
+			long intervalo = sharedPref.getLong("intervalo",0);
+	    	if(intervalo != 0 && (System.currentTimeMillis() - intervalo >= 129600000)){
+	    		lanzarNotificacionTiempo();
+	    	}
 		}
 		if(w1 != null)
 			w1.release();
@@ -267,7 +280,7 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 			String[] events = new String[3];
 			events[0] = pasadosDeFecha + " libros pasados";
 			events[1] = expiranHoy + " a devolver hoy";
-			events[2] = renovables + " a devolver maÃ±ana";
+			events[2] = renovables + " a devolver mañana";
 			inboxStyle.setBigContentTitle("Estado de los libros...");
 			for (int i=0; i < events.length; i++) {
 
@@ -287,9 +300,34 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 		}
 		
 	}
+
+
+
+private void lanzarNotificacionTiempo(){
+	
+	
+	NotificationCompat.Builder mBuilder =
+		    new NotificationCompat.Builder(contexto)
+		        .setSmallIcon(R.drawable.ic_stat_logo)
+		        .setLargeIcon((((BitmapDrawable)contexto.getResources()
+		            .getDrawable(R.drawable.ic_launcher)).getBitmap()))
+		        .setContentTitle("Mi Biblioteca")
+		        .setContentText("Ha pasado más de un día sin lograr actualizar tu biblioteca")
+		        .setTicker("¡Alerta!");
+	
+	Intent inten = new Intent(contexto,ActivityLibros.class);
+	
+	PendingIntent cont = PendingIntent.getActivity(contexto, 0, inten, 0);
+	
+	mBuilder.setContentIntent(cont);
+	
+	NotificationManager mNotificationManager =
+		    (NotificationManager) contexto.getSystemService(android.content.Context.NOTIFICATION_SERVICE);
+		 
+		mNotificationManager.notify(3, mBuilder.build());
+	
+}	
 }
-
-
 
 
 
