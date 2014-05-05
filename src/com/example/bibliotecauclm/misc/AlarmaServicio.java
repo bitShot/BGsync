@@ -17,22 +17,30 @@
 
 package com.example.bibliotecauclm.misc;
 
+
+
 import com.example.bibliotecauclm.net.Actualizadores;
 import com.example.bibliotecauclm.net.AsyncTaskInterface;
+
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+
 public class AlarmaServicio extends BroadcastReceiver{
 
 	@Override
 	public void onReceive(Context ctx, Intent arg1) {
+	   
 		AsyncTaskInterface actu	= Actualizadores.crearActualizadorServicioLibros(ctx);
 		actu.ejecutar();
 		
+		
+    	
+		
 	}
 
-	
+
 	
 }
