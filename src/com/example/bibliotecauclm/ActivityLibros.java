@@ -33,7 +33,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -224,12 +223,10 @@ public class ActivityLibros extends Activity{
 		librosRenovar.clear();
 		for(int i = 0; i<tableLayoutLibros.getChildCount();i++){
 			
-			tableLayoutLibros.getChildAt(i)
-						.findViewById(R.id.layout_dia)
-						.setBackgroundResource(R.drawable.fondo_dia);
 			tableLayoutLibros.getChildAt(i)			
 						.findViewById(R.id.imageView_okey)
 						.setVisibility(View.GONE);
+			pintarCuadradoDia((TableRow)tableLayoutLibros.getChildAt(i));
 		}
 		
 	}
