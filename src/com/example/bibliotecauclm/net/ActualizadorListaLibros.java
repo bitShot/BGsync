@@ -280,7 +280,7 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 			String[] events = new String[3];
 			events[0] = pasadosDeFecha + " libros pasados";
 			events[1] = expiranHoy + " a devolver hoy";
-			events[2] = renovables + " a devolver mañana";
+			events[2] = renovables + " a devolver maÃ±ana";
 			inboxStyle.setBigContentTitle("Estado de los libros...");
 			for (int i=0; i < events.length; i++) {
 
@@ -311,9 +311,9 @@ private void lanzarNotificacionTiempo(){
 		        .setSmallIcon(R.drawable.ic_stat_logo)
 		        .setLargeIcon((((BitmapDrawable)contexto.getResources()
 		            .getDrawable(R.drawable.ic_launcher)).getBitmap()))
-		        .setContentTitle("Mi Biblioteca")
-		        .setContentText("Ha pasado más de un día sin lograr actualizar tu biblioteca")
-		        .setTicker("¡Alerta!");
+		        .setContentTitle("Â¡Alerta!")
+		        .setContentText("MÃ¡s de 1 dÃ­a sin actualizar")
+		        .setTicker("Â¡Alerta!");
 	
 	Intent inten = new Intent(contexto,ActivityLibros.class);
 	
