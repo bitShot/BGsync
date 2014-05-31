@@ -61,13 +61,14 @@ class ComprobadorUsuario  extends  AsyncTask<String ,Boolean ,Integer> implement
 			
 		}else if(res == -1){
 			Toast.makeText(activityLogIn.getApplicationContext(),
-					       "Usuario o contrase�a incorrecto", 
+					       "Usuario o contraseña incorrecto", 
 					       Toast.LENGTH_LONG).show();
 		}else{
 			Toast.makeText(activityLogIn.getApplicationContext(),
-				       "Error de conexi�n con el servidor", 
+				       "Error de conexión con el servidor", 
 				       Toast.LENGTH_LONG).show();
 		}
+		
 		dialogo.dismiss();
 	}
 	
@@ -119,5 +120,5 @@ class ComprobadorUsuario  extends  AsyncTask<String ,Boolean ,Integer> implement
 			e.printStackTrace();
 		}
 	}
-	
+
 }

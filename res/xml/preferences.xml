@@ -29,7 +29,8 @@
         android:title="@string/pref_intervalo"
         android:summary="@string/pref_intervalo_summ"
         android:entries="@array/pref_intervalo_entradas"
-        android:entryValues="@array/pref_intervalo_valores" />
+        android:entryValues="@array/pref_intervalo_valores" 
+        android:defaultValue="4"/>
     
     <Preference android:title="@string/pref_logout"
                 android:key="pref_logout"

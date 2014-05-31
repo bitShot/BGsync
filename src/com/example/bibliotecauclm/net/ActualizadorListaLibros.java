@@ -44,7 +44,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.PowerManager;
-
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
@@ -106,12 +105,7 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 		
 		List<Libro> resultado = new ArrayList<Libro>();
 		try {
-		
-			
-			
 			resultado = obtenerLibros(params[0].toString(),params[1].toString());
-			
-
 			return resultado;
 		
 		} catch (Exception e) {
@@ -166,13 +160,13 @@ class ActualizadorListaLibros extends  AsyncTask<String ,Integer , List<Libro> >
 		this.mNotificationManager.cancel(1);
 	}
 	
+	@Override
 	public void ejecutar(){
 		if(sharedPref.getBoolean("recordar", false))
 			this.execute(sharedPref.getString("usuario", ""),sharedPref.getString("contrasena", ""));
 		else
 			this.execute(LogIn.getUsuarioTemp(),LogIn.getContrasenaTemp());
 	}
-
 	
 	private List<Libro> obtenerLibros(String usuario, String contrasena) throws Exception{
 		

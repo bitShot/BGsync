@@ -70,14 +70,17 @@ public class ActivityLibros extends Activity{
 		this.getActionBar().setDisplayShowTitleEnabled(false);
 		sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
 		tableLayoutLibros = (TableLayout) findViewById(R.id.tableLayout_libros);
-		//AsyncTaskInterface actualizador = Actualizadores.crearActualizadorActivityLibros(this);
-		//actualizador.ejecutar();
-		BaseLibros db = BaseLibros.obtenerDB(this);
-		anadirLibros(db.obtenerLibros());
 		
-		if(sharedPref.getBoolean(Utiles.PREF_NOTIF, true) && sharedPref.getBoolean("recordar", false)){
+		if(sharedPref.getBoolean(Utiles.PREF_NOTIF, true) 
+				&& sharedPref.getBoolean(Utiles.RECORDAR, false) 
+				&& sharedPref.getBoolean(Utiles.PRIMERA_VEZ, true)){
+			sharedPref.edit().putBoolean(Utiles.PRIMERA_VEZ, false).apply();
+			AsyncTaskInterface actualizador = Actualizadores.crearActualizadorActivityLibros(this);
+			actualizador.ejecutar();
 			Utiles.iniciarAlarmaServicio(getApplicationContext());
 		}
+		BaseLibros db = BaseLibros.obtenerDB(this);
+		anadirLibros(db.obtenerLibros());
 	}
 
 	@Override

@@ -32,13 +32,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.text.format.Time;
-
-import com.example.bibliotecauclm.objetos.BaseLibros;
 import com.example.bibliotecauclm.objetos.Libro;
 
 public class Utiles {
@@ -46,7 +43,8 @@ public class Utiles {
 	//KEYs preferencias
 	public static final String PREF_NOTIF = "pref_notif";
 	public static final String PREF_INTER = "pref_intervalo";
-	
+	public static final String RECORDAR = "recordar";
+	public static final String PRIMERA_VEZ = "primera_vez";
 	
 	/**
 	 * Devuelve un libro con el nombre especificado de la lista pasada como
@@ -240,6 +238,7 @@ public class Utiles {
 	
 	public static void iniciarAlarmaServicio(Context context){
 		
+		String interval;
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
 		
 		Intent myAlarm = new Intent(context, AlarmaServicio.class);
@@ -249,16 +248,16 @@ public class Utiles {
 		Calendar updateTime = Calendar.getInstance();
 		updateTime.setTimeInMillis(System.currentTimeMillis());
 		
-		
-		if ((sharedPref.getString(PREF_INTER, "0").equals("1"))){
+		interval = sharedPref.getString(PREF_INTER, "0");
+		if (interval.equals("1")){
 				alarms.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),AlarmManager.INTERVAL_FIFTEEN_MINUTES , recurringAlarm);
-		} else if (sharedPref.getString(PREF_INTER, "0").equals("2")){
+		} else if (interval.equals("2")){
 				alarms.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),AlarmManager.INTERVAL_HALF_HOUR , recurringAlarm);
-		} else if (sharedPref.getString(PREF_INTER, "0").equals("3")){
+		} else if (interval.equals("3")){
 				alarms.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),AlarmManager.INTERVAL_HOUR , recurringAlarm);
-		} else if (sharedPref.getString(PREF_INTER, "0").equals("0") || sharedPref.getString(PREF_INTER, "0").equals("4")){
+		} else if (interval.equals("0") || interval.equals("4")){
 				alarms.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),AlarmManager.INTERVAL_HALF_DAY , recurringAlarm);
-		} else if (sharedPref.getString(PREF_INTER, "0").equals("5")){
+		} else if (interval.equals("5")){
 				alarms.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),AlarmManager.INTERVAL_DAY , recurringAlarm);
 		}
 				

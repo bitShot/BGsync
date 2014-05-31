@@ -21,6 +21,4 @@ public interface AsyncTaskInterface {
 		
 	public void ejecutar();
 	
-	
-	
 }
